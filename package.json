@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node app",
     "dev": "nodemon app",
@@ -20,6 +21,8 @@
   },
   "homepage": "https://github.com/emmanueltamburini/console-list-app-nodejs#readme",
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "inquirer": "^9.1.4",
+    "uuid": "^9.0.0"
   }
 }

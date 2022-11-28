@@ -1,4 +1,4 @@
-require('colors');
+import 'colors';
 
 const showMenu = () => {
     return new Promise(resolve => {
