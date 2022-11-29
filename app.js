@@ -14,7 +14,7 @@ const main = async () => {
                 console.log(desc);
                 break;
             case '2':
-                console.log(tasks._list);
+                console.log(tasks.listArray);
                 break;
             case 3:
                 

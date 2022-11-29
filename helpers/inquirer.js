@@ -50,7 +50,7 @@ const pauseOpt = [
 const inquirerMenu = async () => {
     console.clear();
     console.log('=================================='.green);
-    console.log('         Show an option'.green);
+    console.log('         Show an option'.white);
     console.log('=================================='.green);
 
     const {option} = await inquirer.prompt(menuOpt);

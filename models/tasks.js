@@ -2,6 +2,10 @@ import Task from "./task.js";
 export default class Tasks {
     _list = {};
 
+    get listArray () {
+        return Object.values(this._list);
+    }
+
     constructor() {
         this._list = {}
     }
