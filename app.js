@@ -14,17 +14,16 @@ const main = async () => {
             case '1':
                 const desc = await readInput('Description: ');
                 tasks.createTask(desc);
-                console.log(desc);
                 break;
             case '2':
-                console.log(tasks.listArray);
+                tasks.allTaskList()
                 break;
             case 3:
                 
                 break;
         }
 
-        console.log('\n');
+        console.log('');
         saveDB(JSON.stringify(tasks));
 
         await pause();

@@ -1,4 +1,5 @@
 import Task from "./task.js";
+import 'colors';
 export default class Tasks {
     _list = {};
 
@@ -25,5 +26,12 @@ export default class Tasks {
         task.createTask(object.id, object.desc, object.completeIn);
 
         this._list[task.id] = task;
+    }
+
+    allTaskList() {
+        console.log();
+        this.listArray.forEach((element, index) => {
+            console.log(`${(index+1).toString().green}. ${element.desc} :: ${element.completeIn ? 'Complete'.green : 'Pendent'.red}`)
+        });
     }
 }  
