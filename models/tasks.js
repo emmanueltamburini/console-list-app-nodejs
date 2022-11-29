@@ -28,10 +28,12 @@ export default class Tasks {
         this._list[task.id] = task;
     }
 
-    allTaskList() {
+    listTask(complete = null) {
+        const currentTaskList = complete === null ? this.listArray : this.listArray.filter(element => complete ? (element.completeIn) : !(element.completeIn));
         console.log();
-        this.listArray.forEach((element, index) => {
-            console.log(`${(index+1).toString().green}. ${element.desc} :: ${element.completeIn ? 'Complete'.green : 'Pendent'.red}`)
+        currentTaskList.forEach((element, index) => {
+            const completeIn = complete ? element.completeIn.green : 'Complete'.green;
+            console.log(`${((index+1).toString() + '.').green} ${element.desc} :: ${element.completeIn ? completeIn : 'Pendent'.red}`)
         });
     }
 }  

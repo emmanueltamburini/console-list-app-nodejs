@@ -16,10 +16,13 @@ const main = async () => {
                 tasks.createTask(desc);
                 break;
             case '2':
-                tasks.allTaskList()
+                tasks.listTask();
                 break;
-            case 3:
-                
+            case '3':
+                tasks.listTask(true);
+                break;
+            case '4':
+                tasks.listTask(false);
                 break;
         }
 
