@@ -9,4 +9,10 @@ export default class Task {
         this.id = uuidv4();
         this.desc = desc;
     }
+
+    createTask(id, desc, completeIn) {
+        this.id = id;
+        this.desc = desc;
+        this.completeIn = completeIn;
+    }
 }  

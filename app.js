@@ -1,10 +1,13 @@
 import { inquirerMenu, pause, readInput } from "./helpers/inquirer.js";
+import { readDb, saveDB } from "./helpers/saveFile.js";
 import Tasks from "./models/tasks.js";
 
 const main = async () => {
     let opt = "";
-    const tasks = new Tasks();
+    const tasksDb = readDb();
 
+    const tasks = new Tasks();
+    if (tasksDb) tasks.constructorByObject(tasksDb);
     do {
         opt = await inquirerMenu();
         switch (opt) {
@@ -22,6 +25,8 @@ const main = async () => {
         }
 
         console.log('\n');
+        saveDB(JSON.stringify(tasks));
+
         await pause();
     } while (opt !== '7');
 };
