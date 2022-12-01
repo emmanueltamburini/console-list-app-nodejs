@@ -8,11 +8,16 @@ const saveDB = data => {
 }
 
 const readDb = () => {
-    if (!fs.existsSync(file)) {
-        return null;
+    try {
+        if (!fs.existsSync(file)) {
+            return null;
+        }
+    
+        return JSON.parse(fs.readFileSync(file, {encoding: 'utf-8'}));
+    } catch (error) {
+       console.log("There was a error with you data.json file. it was created again");
+       return null;
     }
-
-    return JSON.parse(fs.readFileSync(file, {encoding: 'utf-8'}));
 }
 
 export {

@@ -1,4 +1,4 @@
-import { inquireConfirmMenu, inquireDeleteMenu, inquirerMenu, pause, readInput } from "./helpers/inquirer.js";
+import { inquireCheckListMenu, inquireConfirmMenu, inquireDeleteMenu, inquirerMenu, pause, readInput } from "./helpers/inquirer.js";
 import { readDb, saveDB } from "./helpers/saveFile.js";
 import Tasks from "./models/tasks.js";
 
@@ -25,6 +25,8 @@ const main = async () => {
                 tasks.listTask(false);
                 break;
             case '5':
+                const ids = await inquireCheckListMenu(tasks.listArray);
+                tasks.markTasks(ids);
                 break;
             case '6':
                 const id = await inquireDeleteMenu(tasks.listArray);

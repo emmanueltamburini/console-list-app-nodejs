@@ -23,17 +23,17 @@ export default class Tasks {
 
     createTaskByObject(object) {
         const task = new Task();
-        task.createTask(object.id, object.desc, object.completeIn);
+        task.createTask(object.id, object.desc, object.completedIn);
 
         this._list[task.id] = task;
     }
 
     listTask(complete = null) {
-        const currentTaskList = complete === null ? this.listArray : this.listArray.filter(element => complete ? (element.completeIn) : !(element.completeIn));
+        const currentTaskList = complete === null ? this.listArray : this.listArray.filter(element => complete ? (element.completedIn) : !(element.completedIn));
         console.log();
         currentTaskList.forEach((element, index) => {
-            const completeIn = complete ? element.completeIn.green : 'Complete'.green;
-            console.log(`${((index+1).toString() + '.').green} ${element.desc} :: ${element.completeIn ? completeIn : 'Pendent'.red}`)
+            const completedIn = complete ? element.completedIn.green : 'Complete'.green;
+            console.log(`${((index+1).toString() + '.').green} ${element.desc} :: ${element.completedIn ? completedIn : 'Pendent'.red}`)
         });
     }
 
@@ -42,5 +42,15 @@ export default class Tasks {
             console.log(`Task '${this._list[id].desc}' has been deleted successfully`)
             delete this._list[id];
         }
+    }
+
+    markTasks(ids = []) {
+        this.listArray.forEach(element => {
+            if (ids.includes(element.id)) {
+                element.completedIn = element.completedIn ? element.completedIn : new Date().toISOString();  
+            } else {
+                element.completedIn = null;
+            }
+        });
     }
 }  

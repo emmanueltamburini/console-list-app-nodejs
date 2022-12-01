@@ -121,10 +121,33 @@ const inquireConfirmMenu = async (message) => {
     return ok;
 }
 
+const inquireCheckListMenu = async (tasks = []) => {
+    console.clear();
+    const choices = tasks.map((task, index) => 
+        ({
+            value: task.id,
+            name: `${((index+1).toString() + '.').green} ${task.desc}`,
+            checked: !!task.completedIn
+        }));
+
+        const questions = [
+            {
+                type: 'checkbox',
+                name: 'ids',
+                message: 'What do you want to mark as completed?',
+                choices
+            }
+        ];
+
+        const {ids} = await inquirer.prompt(questions); 
+        return ids;
+}
+
 export {
     inquirerMenu,
     pause,
     readInput,
     inquireDeleteMenu,
-    inquireConfirmMenu
+    inquireConfirmMenu,
+    inquireCheckListMenu
 }
