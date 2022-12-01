@@ -28,9 +28,12 @@ const main = async () => {
                 break;
             case '6':
                 const id = await inquireDeleteMenu(tasks.listArray);
-                const ok = await inquireConfirmMenu('Are you sure?');
-                if (ok) {
-                    tasks.deleteTask(id);
+
+                if(id !== 0) {
+                    const ok = await inquireConfirmMenu('Are you sure?');
+                    if (ok) {
+                        tasks.deleteTask(id);
+                    }
                 }
                 break;
         }

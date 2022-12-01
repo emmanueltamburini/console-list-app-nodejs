@@ -90,6 +90,11 @@ const inquireDeleteMenu = async (tasks = []) => {
             name: `${((index+1).toString() + '.').green} ${task.desc}`
         }));
 
+        choices.unshift({
+            value: 0,
+            name: `${'0.'.green} Cancel`           
+        });
+
         const questions = [
             {
                 type: 'list',
