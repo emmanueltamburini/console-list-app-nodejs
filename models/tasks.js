@@ -36,4 +36,11 @@ export default class Tasks {
             console.log(`${((index+1).toString() + '.').green} ${element.desc} :: ${element.completeIn ? completeIn : 'Pendent'.red}`)
         });
     }
+
+    deleteTask(id = '') {
+        if(this._list[id]) {
+            console.log(`Task '${this._list[id].desc}' has been deleted successfully`)
+            delete this._list[id];
+        }
+    }
 }  

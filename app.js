@@ -1,4 +1,4 @@
-import { inquirerMenu, pause, readInput } from "./helpers/inquirer.js";
+import { inquireConfirmMenu, inquireDeleteMenu, inquirerMenu, pause, readInput } from "./helpers/inquirer.js";
 import { readDb, saveDB } from "./helpers/saveFile.js";
 import Tasks from "./models/tasks.js";
 
@@ -23,6 +23,15 @@ const main = async () => {
                 break;
             case '4':
                 tasks.listTask(false);
+                break;
+            case '5':
+                break;
+            case '6':
+                const id = await inquireDeleteMenu(tasks.listArray);
+                const ok = await inquireConfirmMenu('Are you sure?');
+                if (ok) {
+                    tasks.deleteTask(id);
+                }
                 break;
         }
 
